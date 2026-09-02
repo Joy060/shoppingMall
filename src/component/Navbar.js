@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useCart } from "../context/Cartcontext";
+
 
 
 const NavbarDiv = styled.div`
@@ -13,6 +15,8 @@ const NavbarDiv = styled.div`
 
 const Navbar = ()=>{
 
+    const { totalCount, totalPrice }= useCart();
+
     return(
         <NavbarDiv>
             <span>
@@ -23,7 +27,7 @@ const Navbar = ()=>{
                     <Link to="/login">登入</Link>
                 </span>|
                 <span>
-                    <Link to="/cart">購物車(0)</Link>
+                    <Link to="/cart">購物車:{totalCount}件商品|總計:${totalPrice}</Link>
                 </span>
             </div>
         </NavbarDiv>
