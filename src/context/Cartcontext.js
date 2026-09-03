@@ -27,8 +27,9 @@ export function CartProvider({ children }){
     const clearCart = () =>setCart([]);
 
     // 計算商品總數量與總金額
-    const totalCount = cart.reduce((sum,item)=> sum + item.count,0);
-    const totalPrice = cart.reduce((sum,item)=> sum + item.price*item.count,0);
+    const totalCount = cart.reduce((sum,item)=>{ return sum + item.count},0);
+    const totalPrice = cart.reduce((sum,item)=>{ return sum + item.price*item.count},0);
+
 
     return(
         <CartContext.Provider value={{ cart, addToCart, clearCart, totalCount, totalPrice}}>

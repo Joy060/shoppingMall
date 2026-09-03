@@ -10,7 +10,7 @@ const HeaderDiv = styled.div`
     padding: 20px;
     height: 100px;
 
-    background-color: ${props => props.theme.thirdColor};
+    /* background-color: ${props => props.theme.thirdColor}; */
     /* border: 1px solid red; */
 `;
 

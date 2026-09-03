@@ -7,11 +7,11 @@ export  function ProductProvider({children}){
 
         // 控制清單狀態
         const [products, setProducts] = useState([
-            { id: 1, name:'運動', count: 1 },
-            { id: 3, name:'網球', count: 2 },
-            { id: 4, name:'羽球', count: 1 },
-            { id: 5, name:'籃球', count: 5 },
-            { id: 6, name:'睡覺', count: 6 }
+            { id: 1, name:'盲盒', img:'/img/productA.webp',count: 1 ,price:50},
+            { id: 3, name:'卡夾',img:'/img/productB.webp', count: 2 ,price:80},
+            { id: 4, name:'吊飾',img:'/img/productC.webp', count: 1 ,price:500},
+            { id: 5, name:'紅包袋',img:'/img/productD.webp', count: 5 ,price:100},
+            { id: 6, name:'12吋坐姿娃娃', img:'/img/productE.jpg',count: 6 ,price:250}
         ]);
 
         // 控制輸入框狀態

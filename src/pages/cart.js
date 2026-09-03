@@ -38,8 +38,8 @@ const Center =styled.div`
 
 const Cart = ()=>{
 
-    const {cart} = useCart();
-
+    const {cart, totalCount, totalPrice} = useCart();
+    
     return(
         <DefaultLayout>
             <Center>
@@ -52,6 +52,11 @@ const Cart = ()=>{
                             </li>
                         })
                     }
+
+                <h2>總金額</h2>
+                <p>總共{totalCount}件</p>
+                <p>總共{totalPrice}元</p>
+                
                 <BtnDiv>
                     <button>
                         <Link to="/">回到商店</Link>
