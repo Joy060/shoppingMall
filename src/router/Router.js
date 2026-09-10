@@ -7,6 +7,7 @@ import Login from "../pages/login";
 import Admin from "../pages/admin";
 import SellLogin from "../pages/sell-login";
 import Shopping from "../pages/shopping";
+import ProductDetail from './ProductDetail';
 
 
 
@@ -15,6 +16,8 @@ const Router = () =>{
         <div>
             <Routes>
                 <Route path='/' element={<Shopping/>} />
+
+                <Route path="/product/:id" element={<ProductDetail />} />
                 <Route path='/login' element={<Login/>} />
                 <Route path='/admin' element={<Admin/>} />
                 <Route path='/seller-login' element={<SellLogin/>} />

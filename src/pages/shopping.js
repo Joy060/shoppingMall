@@ -77,6 +77,7 @@ const Shopping = ()=>{
                                             <p>{item.name}</p>
                                             <p>${item.price}</p>
                                             <button onClick={()=>addToCart(item)}>加入購物車</button>
+                                            <Link to={`/product/${item.id}`}>more</Link>
 
                                         </CardDiv>
                             })
