@@ -23,6 +23,25 @@ export function CartProvider({ children }){
         });
     };
 
+    // 減少商品數量 at購物車
+    const decreaseCart = (productId,delta)=>{
+        setCart((prevCart)=>{
+            return prevCart.map((item)=>{
+                if(item.id === productId){
+                    const newCount = (item.count ||1 )+ delta;
+                    return { ...item,count:newCount };
+                }
+                return item;
+            });
+        });
+    };
+    
+    // 刪除商品
+    const deletefromCart = (productId) =>{
+        setCart((prevCart)=>prevCart.filter((item)=> item.id !== productId));
+    };
+
+
     // 清空購物車
     const clearCart = () =>setCart([]);
 
@@ -32,7 +51,7 @@ export function CartProvider({ children }){
 
 
     return(
-        <CartContext.Provider value={{ cart, addToCart, clearCart, totalCount, totalPrice}}>
+        <CartContext.Provider value={{ cart, addToCart, decreaseCart,clearCart, deletefromCart, totalCount, totalPrice}}>
             {children}
         </CartContext.Provider>
     );

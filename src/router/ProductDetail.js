@@ -45,8 +45,8 @@ const ProductDetail = () => {
     return(
         <DefaultLayout>
                 <DetailDiv>
-                    <CardDiv key={product.id}>
-                        <Img src={product.img}></Img>
+                    <CardDiv>
+                        <Img src={product.img} alt={product.name}></Img>
                         <p>{product.name}</p>
                         <p>${product.price}</p>
                         <button onClick={()=>addToCart(product)}>加入購物車</button>

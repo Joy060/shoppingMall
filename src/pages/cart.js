@@ -9,36 +9,44 @@ const BtnDiv = styled.div`
     justify-content: space-between;
 `;
 
+const Btn = styled.button`
+    width: 20px;
+    height: 20px;
+    display: inline;
+`;
+
 const Center =styled.div`
-    height: 300px;
-    width: 300px;
+    width: 80%;
+    padding: 40px 0 ;
     display: flex;
+    margin: 50px auto ;
     justify-content: center;
     align-items: center;
     flex-flow: column;
     position: relative;
-    width: 100%;
+    border: 1px solid black;
     `;
 
-// const FlexCenter = styled.div`
-//     display: flex;
-//     width: 300px;
-//     justify-content: space-between;
-//     /* border: 1px solid black; */
-// `;
+// 商品卡片
+const CardDiv =styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    width: 350px;
+    border: 0.25px solid black;
+    `;
 
-// const Card = styled.div`
-//     width: 100px;
-//     height: 100px;
-//     background-color: aliceblue;
-//     margin: 12px;
-//     border: 1px solid red;
-// `;
+// 圖片格式
+const Img = styled.img`
+    width: 40px;
+`;
 
 
 const Cart = ()=>{
 
-    const {cart, totalCount, totalPrice} = useCart();
+    const {cart, totalCount, totalPrice, addToCart, deletefromCart,decreaseCart,clearCart} = useCart();
     
     return(
         <DefaultLayout>
@@ -46,12 +54,26 @@ const Cart = ()=>{
                 <h2>我的購物車</h2>
                     {
                         cart.map((item)=>{
-                            return <li key={item.id}>
-                                    {item.name}(數量{item.count})
+                            return (
+                                <CardDiv key={item.id}>
+                                        <Img src={item.img}></Img>
+                                    <div>
+                                        <p>{item.name}</p>
+                                        <p>${item.price}</p>
+                                    </div>
+                                    <div>
+                                        <Btn onClick={()=>decreaseCart(item.id, -1)}>-</Btn>
+                                        <span>{item.count}</span>
+                                        <Btn onClick={()=>addToCart(item)}>+</Btn>
+                                    </div>
+                                    <button onClick={()=>deletefromCart(item.id)}>刪除</button>
+                                </CardDiv>
 
-                            </li>
+                            )
                         })
                     }
+                
+                <button onClick={()=>clearCart()}>清空購物車</button>
 
                 <h2>總金額</h2>
                 <p>總共{totalCount}件</p>
