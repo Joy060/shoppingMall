@@ -52,7 +52,9 @@ const Cart = ()=>{
         <DefaultLayout>
             <Center>
                 <h2>我的購物車</h2>
-                    {
+                    {cart.length === 0 ?(
+                        <p>購物車內目前沒有商品</p>
+                    ):(
                         cart.map((item)=>{
                             return (
                                 <CardDiv key={item.id}>
@@ -71,9 +73,11 @@ const Cart = ()=>{
 
                             )
                         })
-                    }
+                    )}
                 
-                <button onClick={()=>clearCart()}>清空購物車</button>
+                {cart.length > 0 &&(
+                    <button onClick={()=>clearCart()}>清空購物車</button>
+                )}
 
                 <h2>總金額</h2>
                 <p>總共{totalCount}件</p>

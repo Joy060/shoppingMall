@@ -23,16 +23,18 @@ export function CartProvider({ children }){
         });
     };
 
-    // 減少商品數量 at購物車
+    // 減少商品數量 at購物車 & 數量為0則刪除
     const decreaseCart = (productId,delta)=>{
         setCart((prevCart)=>{
-            return prevCart.map((item)=>{
-                if(item.id === productId){
-                    const newCount = (item.count ||1 )+ delta;
-                    return { ...item,count:newCount };
-                }
-                return item;
-            });
+            return prevCart
+                .map((item)=>{
+                    if(item.id === productId){
+                        const newCount = (item.count ||1 )+ delta;
+                        return { ...item,count:newCount };
+                    }
+                    return item;
+                })
+                .filter((item)=>item.count > 0)
         });
     };
     
